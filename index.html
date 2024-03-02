@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fShopping Cart</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Desserts Page</h1>
+    </header>
+    <main>
+      <button id="cart-btn" type="button" class="btn">
+        <span id="show-hide-cart">Show</span> Cart
+      </button>
+      <div id="cart-container">
+        <button class="btn" id="clear-cart-btn">Clear Cart</button>
+        <div id="products-container"></div>
+        <p>Total number of items: <span id="total-items">0</span></p>
+        <p>Subtotal: <span id="subtotal">$0</span></p>
+        <p>Taxes: <span id="taxes">$0</span></p>
+        <p>Total: <span id="total">$0</span></p>
+      </div>
+      <div id="dessert-card-container"></div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
