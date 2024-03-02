@@ -137,7 +137,7 @@ class ShoppingCart  {
         const currentProductCountSpan = document.getElementById(`product-count-for-id${id}`);  ///checking product --->>>
 
         currentProductCount > 1 //// setting product cart!!!
-        ? currentProductCountSpan.textContent = `${currentProductCount}x` 
+        ? currentProductCountSpan.textContent = `${currentProductCount}x ${name}` 
         : productsContainer.innerHTML += `
         <div class="product" id="dessert${id}">
         <p><span class="product-count" id="product-count-for-id${id}">${name}</span> </p>
@@ -149,3 +149,39 @@ class ShoppingCart  {
 
     }
 };
+
+
+const cart = new ShoppingCart();
+
+
+const addToCartBtns = document.getElementsByClassName("btn-add-to-cart-btn");
+
+
+
+
+
+
+[...addToCartBtns].forEach((btn)=>{
+
+    btn.addEventListener("click", (event)=>{
+
+        cart.addItem(Number(event.target.id), products);
+        
+
+    } )
+
+});
+
+
+cartBtn.addEventListener("click", ()=> {
+
+    isCartShowing = !isCartShowing;
+    showHideCartSpan.textContent = isCartShowing  
+    ? "Hide" 
+    : "Show" 
+
+    cartContainer.style.display = isCartShowing 
+    ? "block"
+    : "none";
+
+})
