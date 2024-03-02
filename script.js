@@ -90,7 +90,7 @@ const products = [
   
   
   
-products.forEach(({name , id, price, category})=>{
+products.forEach(({name , id, price, category})=>{   /// adding UI
 
     dessertCards.innerHTML += `
         <div class="dessert-card">
@@ -148,6 +148,42 @@ class ShoppingCart  {
 
 
     }
+
+
+    getCounts(){
+        return this.items.length;
+    }
+
+    calculateTaxes(amount){
+
+        return parseFloat(((this.taxRate / 100) * amount).toFixed(2));
+
+    }
+
+    calculateTotal() {
+    const subTotal = this.items.reduce((total, item) => 
+    total + item.price, 0);
+
+    const tax = this.calculateTaxes(subTotal);
+
+    this.total = subTotal + tax;
+
+
+
+    cartSubTotal.textContent = `$${subTotal.toFixed(2)}`
+    cartTaxes.textContent = `$${tax.toFixed(2)}`
+    cartTotal.textContent = `$${this.total.toFixed(2)}`
+
+
+    return this.total;
+
+
+
+    }
+
+  
+
+    
 };
 
 
@@ -161,19 +197,19 @@ const addToCartBtns = document.getElementsByClassName("btn-add-to-cart-btn");
 
 
 
-[...addToCartBtns].forEach((btn)=>{
+[...addToCartBtns].forEach((btn)=>{  ///cart btns
 
     btn.addEventListener("click", (event)=>{
 
-        cart.addItem(Number(event.target.id), products);
-        
-
+        cart.addItem(Number(event.target.id), products);  // adding products into cart
+        totalNumberOfItems.textContent =  cart.getCounts(); // addding number of producsts in cart
+        cart.calculateTotal(); // calculating total and subtotal
     } )
 
 });
 
 
-cartBtn.addEventListener("click", ()=> {
+cartBtn.addEventListener("click", ()=> {   // show btn
 
     isCartShowing = !isCartShowing;
     showHideCartSpan.textContent = isCartShowing  
